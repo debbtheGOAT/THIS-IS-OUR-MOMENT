@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b0e17">
+  <meta name="description" content="LoL Worlds Pixel 電競戰況板">
+  <title>WORLDS PIXEL | 戰況板</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <header class="topbar">
+      <a class="brand" href="#home">
+        <span class="brand-icon">◆</span>
+        WORLDS<span class="pixel-green">PIXEL</span>
+      </a>
+      <span class="demo-tag">DEMO MODE</span>
+    </header>
+
+    <main id="home">
+
+      <section class="hero">
+        <p class="eyebrow">LEAGUE OF LEGENDS</p>
+        <h1>WORLD<br>CHAMPIONSHIP</h1>
+        <p class="subtitle">YOUR PIXEL ESPORTS TERMINAL</p>
+      </section>
+
+      <section class="match-card panel">
+        <div class="section-heading">
+          <span class="status-dot"></span>
+          <span>MATCH CENTER</span>
+          <span class="demo-label">SIMULATED DATA</span>
+        </div>
+
+        <label class="select-label" for="match-select">
+          SELECT MATCH
+        </label>
+        <select id="match-select" class="pixel-select">
+          <option value="0">GEN vs T1</option>
+          <option value="1">BLG vs G2</option>
+        </select>
+
+        <div class="match-info">
+          <span id="match-round">WORLD FINALS</span>
+          <span id="match-game">GAME 3</span>
+        </div>
+
+        <div class="scoreboard">
+          <div class="team">
+            <div class="team-logo gen-logo" id="team-a-logo">G</div>
+            <h2 id="team-a">GEN</h2>
+            <span class="team-side blue">BLUE SIDE</span>
+          </div>
+
+          <div class="score-area">
+            <div class="series-score">
+              <span id="series-a">1</span>
+              <span class="score-divider">:</span>
+              <span id="series-b">1</span>
+            </div>
+            <div class="game-clock" id="game-clock">18:42</div>
+            <span class="clock-caption">GAME TIME</span>
+          </div>
+
+          <div class="team">
+            <div class="team-logo t1-logo" id="team-b-logo">T</div>
+            <h2 id="team-b">T1</h2>
+            <span class="team-side red">RED SIDE</span>
+          </div>
+        </div>
+
+        <div class="game-stats">
+          <div class="stat">
+            <span class="stat-label">KILLS</span>
+            <strong id="kills-a">8</strong>
+            <div class="stat-bar">
+              <span id="kills-bar-a"></span>
+            </div>
+            <strong id="kills-b">5</strong>
+          </div>
+
+          <div class="stat">
+            <span class="stat-label">GOLD</span>
+            <strong id="gold-a">34.2k</strong>
+            <div class="stat-bar gold-bar">
+              <span id="gold-bar-a"></span>
+            </div>
+            <strong id="gold-b">31.8k</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section-panel" id="lineup">
+        <div class="section-heading">
+          <span class="section-number">01</span>
+          <h2>TEAM COMPOSITION</h2>
+        </div>
+
+        <p class="section-note">TOP / JUNGLE / MID / BOT / SUPPORT</p>
+
+        <div class="team-label">
+          <span class="team-color blue-bg"></span>
+          <strong id="lineup-a-name">GEN</strong>
+        </div>
+        <div class="champion-grid" id="lineup-a"></div>
+
+        <div class="team-label second-team">
+          <span class="team-color red-bg"></span>
+          <strong id="lineup-b-name">T1</strong>
+        </div>
+        <div class="champion-grid" id="lineup-b"></div>
+
+        <p class="data-note">
+          * 英雄陣容為示範資料，並非官方即時選角。
+        </p>
+      </section>
+
+      <section class="panel section-panel" id="objectives">
+        <div class="section-heading">
+          <span class="section-number">02</span>
+          <h2>OBJECTIVE CONTROL</h2>
+        </div>
+
+        <p class="section-note">MAP CONTROL STATUS</p>
+
+        <div class="objective-list" id="objective-list"></div>
+
+        <div class="turret-card">
+          <div class="objective-icon">▥</div>
+          <div class="objective-detail">
+            <strong>TURRETS</strong>
+            <span class="objective-description">防禦塔摧毀數</span>
+          </div>
+          <div class="objective-count">
+            <strong id="turret-a">4</strong>
+            <span>:</span>
+            <strong id="turret-b">3</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel section-panel" id="overview">
+        <div class="section-heading">
+          <span class="section-number">03</span>
+          <h2>MATCH SUMMARY</h2>
+        </div>
+        <div id="match-summary" class="summary-content"></div>
+      </section>
+
+      <section class="panel controls">
+        <div>
+          <p class="control-title">SYSTEM CONTROL</p>
+          <p class="control-description" id="update-status">
+            等待操作
+          </p>
+        </div>
+        <button id="refresh-btn" class="pixel-button">
+          ↻ REFRESH
+        </button>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p>WORLDS PIXEL v1.0</p>
+      <p>FAN-MADE · NOT AN OFFICIAL RIOT PRODUCT</p>
+    </footer>
+
+    <nav class="bottom-nav" aria-label="頁面導覽">
+      <a href="#home" class="nav-item active">
+        <span>▦</span>
+        <small>HOME</small>
+      </a>
+      <a href="#lineup" class="nav-item">
+        <span>⚔</span>
+        <small>TEAMS</small>
+      </a>
+      <a href="#objectives" class="nav-item">
+        <span>◈</span>
+        <small>MAP</small>
+      </a>
+      <a href="#overview" class="nav-item">
+        <span>▤</span>
+        <small>INFO</small>
+      </a>
+    </nav>
+
+  </div>
+</body>
+</html>
